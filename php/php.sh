@@ -8,7 +8,7 @@ sudo apt-get install \
     php5-mcrypt php5-memcached php5-mongo \
     php5-mysqlnd php5-dev php5-xsl php5-pgsql \
     php5-imap php5-imagick php5-redis php-pear \
-    libapache2-mod-php5 -y
+    libapache2-mod-php5 php5-openssl -y
 
 # Composer
 curl -sS https://getcomposer.org/installer | php

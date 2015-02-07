@@ -2,11 +2,11 @@
 
 # Install email
 echo "enter user name for msmtp"
-read USERNAME 
+read USERNAME
 echo "enter real name"
 read REALNAME
 echo "password for msmtp"
-read PASSWORD 
+read PASSWORD
 echo "enter your email"
 read EMAIL
 
@@ -17,16 +17,16 @@ touch $HOME/.msmtp.log
 
 cat <<EOF > "$HOME/.msmtprc"
 account default
-host smtp.gmail.com         
-port 587                    
-from "$EMAIL"  
-tls on                     
-tls_starttls on             
+host smtp.gmail.com
+port 587
+from "$EMAIL"
+tls on
+tls_starttls on
 tls_trust_file /etc/ssl/certs/ca-certificates.crt 
-auth on                    
-user "$EMAIL"       
-password "$PASSWORD"      
-logfile ~/.msmtp.log 
+auth on
+user "$EMAIL"
+password "$PASSWORD"
+logfile ~/.msmtp.log
 EOF
 chmod 600 $HOME/.msmtprc
 
@@ -34,15 +34,15 @@ chmod 600 $HOME/.msmtprc
 sudo apt-get install fetchmail -y
 
 cat <<EOF > "$HOME/.fetchmailrc"
-with proto POP3                      
-user "$EMAIL"        
-there with password "$PASSWORD"        
-is "$USERNAME" here                              
-mda "/usr/bin/procmail -d %T"        
-options                                                             
-no keep                                 
-ssl                                  
-sslcertck                            
+with proto POP3
+user "$EMAIL"
+there with password "$PASSWORD"
+is "$USERNAME" here
+mda "/usr/bin/procmail -d %T"
+options
+no keep
+ssl
+sslcertck
 sslcertpath /etc/ssl/certs
 EOF
 chmod 600 $HOME/.fetchmailrc
@@ -52,22 +52,23 @@ sudo apt-get install procmail -y
 echo "MAIL=/var/spool/mail/$USERNAME && export MAIL" >> $HOME/dotfiles/bash/env
 
 cat <<EOF > "$HOME/.procmailrc"
-PATH=/bin:/usr/bin:/usr/local/bin 
-VERBOSE=off 
+PATH=/bin:/usr/bin:/usr/local/bin
+VERBOSE=off
 MAILDIR=$HOME/Mail
-LOGFILE=$HOME/.procmaillog 
+LOGFILE=$HOME/.procmaillog
 EOF
 
 # Mutt
 cat <<EOF > "$HOME/.muttrc"
 set realname =$REALNAME
-set from =$EMAIL 
+set from =$EMAIL
 set use_from = yes
 set envelope_from ="yes"
 set sendmail="/usr/bin/msmtp"
 
 # If not set in environment variables:
-set spoolfile = /var/spool/mail/john
+set spoolfile = /var/spool/mail/$USERNAME
+
 
 #======================================================#
 # Folders
@@ -88,13 +89,11 @@ hdr_order Date: From: User-Agent: X-Mailer \
 ignore *
 unignore Date: From: User-Agent: X-Mailer  \
              To: Cc: Reply-To: Subject:
-               
 #======================================================#
 # which editor do you want to use? 
 # vim of course!
-set editor="vim -c 'set tw=70 et' '+/^$' " 
+set editor="vim -c 'set tw=70 et' '+/^$' "
 set edit_headers          # See the headers when editing
-
 #======================================================#
 # Aliases
 
@@ -108,6 +107,3 @@ set pager_context=5  # Retain 5 lines of previous page when scrolling.
 set status_on_top    # Status bar on top.
 push <show-version>  # Shows mutt version at startup
 EOF
-
-
-
