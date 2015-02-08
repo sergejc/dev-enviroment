@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Apache
 sudo apt-get install apache2 -y

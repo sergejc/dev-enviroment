@@ -79,6 +79,12 @@ if [ ! -f $filename ]; then
     sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 fi
 
+# Sublime 3
+filename='/etc/apt/sources.list.d/webupd8team-ubuntu-sublime-text-3-utopic.list'
+if [ ! -f $filename ]; then
+    sudo add-apt-repository ppa:webupd8team/sublime-text-3 -y
+fi
+
 sudo apt-get update
 
 sudo apt-get install google-chrome-stable -y
@@ -89,3 +95,4 @@ sudo service docker restart
 
 sudo apt-get install dkms virtualbox-4.3 -y
 sudo apt-get install oracle-java8-installer -y
+sudo apt-get install sublime-text-installer -y
