@@ -47,6 +47,11 @@ read tmp
 git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git solarized
 chmod +x solarized/install.sh && solarized/install.sh && solarized/install.sh
 
+# Dircolors
+if [ ! -d $HOME/.foldercolors ]; then
+    git clone https://github.com/seebi/dircolors-solarized.git $HOME/.foldercolors 
+fi
+
 # Docker
 filename='/etc/apt/sources.list.d/docker.list'
 if [ ! -f $filename ]; then
