@@ -12,4 +12,4 @@ sudo apt-get install \
     wget memcached apache2-utils libssl-dev \
     apt-transport-https iftop unity-tweak-tool dconf-cli \
     tmux nmap elinks openssl ca-certificates rlwrap \
-    net-tools python-pip netcat -y 
+    net-tools python-pip python-dev netcat -y 

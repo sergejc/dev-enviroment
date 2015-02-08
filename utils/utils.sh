@@ -1,15 +1,31 @@
 #!/bin/bash
 
+# Locale
+locale -a | grep -q en_GB.utf8 || sudo locale-gen en_GB.utf8
+
+# Git 
+if ! hash git 2&> /dev/null; then
+    sudo apt-get install git -y 
+fi
+
+# ZSH
+if ! hash zsh 2&> /dev/null; then
+    sudo apt-get install zsh -y
+fi
+
+if ! hash pip 2&> /dev/null; then
+    sudo apt-get install python-pip -y
+fi
+
 # SysMonitor Indicator
 filename='/etc/apt/sources.list.d/fossfreedom-ubuntu-indicator-sysmonitor-utopic.list'
 if [ ! -f $filename ]; then
-    sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor
+    sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor -y
 fi
-
 
 # OH MY ZSHELL
 if [ ! -d $HOME/.oh-my-zsh ]; then
-    curl -L http://install.ohmyz.sh | sh
+    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
 if ! grep -q "^$USER.*zsh" /etc/passwd; then
@@ -23,7 +39,7 @@ fi
 
 # Solorize
 if [ ! -f "/usr/bin/gconftool-2" ]; then
-    sudo apt-get install gconf2
+    sudo apt-get install gconf2 -y
 fi
 echo "create dark and light gnome terminal profile manualy"
 read tmp
@@ -41,7 +57,6 @@ fi
 if ! grep -q "docker.*$USER" /etc/group; then
     sudo groupadd docker
     sudo gpasswd -a ${USER} docker
-    sudo service docker restart
 fi
 
 # VirtualBox
@@ -54,7 +69,7 @@ fi
 # Java
 filename='/etc/apt/sources.list.d/webupd8team-ubuntu-java-utopic.list'
 if [ ! -f $filename ]; then
-    sudo apt-add-repository ppa:webupd8team/java
+    sudo apt-add-repository ppa:webupd8team/java -y
 fi
 
 # Google Chrome
@@ -68,7 +83,9 @@ sudo apt-get update
 
 sudo apt-get install google-chrome-stable -y
 sudo apt-get install indicator-sysmonitor -y
+
 sudo apt-get install lxc-docker -y
-pip install fig
+sudo service docker restart
+
 sudo apt-get install dkms virtualbox-4.3 -y
 sudo apt-get install oracle-java8-installer -y
