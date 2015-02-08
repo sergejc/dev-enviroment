@@ -37,7 +37,7 @@ if [ ! -f $HOME/.zshrc ]; then
     sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="agnoster"/' $HOME/.zshrc
 fi
 
-# Solorize
+# Solarized Colorscheme
 if [ ! -f "/usr/bin/gconftool-2" ]; then
     sudo apt-get install gconf2 -y
 fi
