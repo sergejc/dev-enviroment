@@ -1,16 +1,30 @@
 #!/bin/bash
 
 # SysMonitor Indicator
-sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor
-sudo apt-get update && sudo apt-get install indicator-sysmonitor -y
-sudo apt-get install indicator-sysmonitor -y
+filename='/etc/apt/sources.list.d/fossfreedom-ubuntu-indicator-sysmonitor-utopic.list'
+if [ ! -f $filename ]; then
+    sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor
+fi
 
 
 # OH MY ZSHELL
-curl -L http://install.ohmyz.sh | sh
-chsh -s $(which zsh)
+if [ ! -d $HOME/.oh-my-zsh ]; then
+    curl -L http://install.ohmyz.sh | sh
+fi
+
+if ! grep -q "^$USER.*zsh" /etc/passwd; then
+    chsh -s $(which zsh) $USER
+fi
+
+if [ ! -f $HOME/.zshrc ]; then
+    cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
+    sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="agnoster"/' $HOME/.zshrc
+fi
 
 # Solorize
+if [ ! -f "/usr/bin/gconftool-2" ]; then
+    sudo apt-get install gconf2
+fi
 echo "create dark and light gnome terminal profile manualy"
 read tmp
 
@@ -18,27 +32,43 @@ git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git solar
 chmod +x solarized/install.sh && solarized/install.sh && solarized/install.sh
 
 # Docker
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
-sudo sh -c "echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-sudo apt-get update
-sudo apt-get install lxc-docker -y
-sudo groupadd docker
-sudo gpasswd -a ${USER} docker
-sudo service docker restart
+filename='/etc/apt/sources.list.d/docker.list'
+if [ ! -f $filename ]; then
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+    sudo sh -c "echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+fi
+
+if ! grep -q "docker.*$USER" /etc/group; then
+    sudo groupadd docker
+    sudo gpasswd -a ${USER} docker
+    sudo service docker restart
+fi
 
 # VirtualBox
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian trusty contrib" >> /etc/apt/sources.list.d/virtualbox.list'
-sudo apt-get update
-sudo apt-get install dkms virtualbox-4.3 -y
+filename='/etc/apt/sources.list.d/virtualbox.list'
+if [ ! -f $filename ]; then
+    wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+    sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian trusty contrib" >> /etc/apt/sources.list.d/virtualbox.list'
+fi
 
 # Java
-sudo apt-add-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java8-installer -y
+filename='/etc/apt/sources.list.d/webupd8team-ubuntu-java-utopic.list'
+if [ ! -f $filename ]; then
+    sudo apt-add-repository ppa:webupd8team/java
+fi
 
 # Google Chrome
-wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+filename='/etc/apt/sources.list.d/google-chrome.list'
+if [ ! -f $filename ]; then
+    wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+fi
+
 sudo apt-get update
+
 sudo apt-get install google-chrome-stable -y
+sudo apt-get install indicator-sysmonitor -y
+sudo apt-get install lxc-docker -y
+pip install fig
+sudo apt-get install dkms virtualbox-4.3 -y
+sudo apt-get install oracle-java8-installer -y

@@ -11,4 +11,5 @@ sudo apt-get install \
     software-properties-common xclip tree \
     wget memcached apache2-utils libssl-dev \
     apt-transport-https iftop unity-tweak-tool dconf-cli \
-    tmux nmap elinks openssl ca-certificates rlwrap -y 
+    tmux nmap elinks openssl ca-certificates rlwrap \
+    net-tools python-pip netcat -y 
