@@ -7,6 +7,11 @@ locale -a | grep -q en_GB.utf8 || sudo locale-gen en_GB.utf8
 if ! hash git 2&> /dev/null; then
     sudo apt-get install git -y 
 fi
+git config --local user.name "Sergej Charskij"
+git config --local user.email "sergej.charskij@gmail.com" 
+git config --local core.editor vim
+git config --local color.ui auto
+git config --global core.filemode false
 
 # ZSH
 if ! hash zsh 2&> /dev/null; then
@@ -23,33 +28,8 @@ if [ ! -f $filename ]; then
     sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor -y
 fi
 
-# OH MY ZSHELL
-if [ ! -d $HOME/.oh-my-zsh ]; then
-    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-fi
-
 if ! grep -q "^$USER.*zsh" /etc/passwd; then
     chsh -s $(which zsh) $USER
-fi
-
-if [ ! -f $HOME/.zshrc ]; then
-    cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
-    sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="agnoster"/' $HOME/.zshrc
-fi
-
-# Solarized Colorscheme
-if [ ! -f "/usr/bin/gconftool-2" ]; then
-    sudo apt-get install gconf2 -y
-fi
-echo "create dark and light gnome terminal profile manualy"
-read tmp
-
-git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git solarized
-chmod +x solarized/install.sh && solarized/install.sh && solarized/install.sh
-
-# Dircolors
-if [ ! -d $HOME/.foldercolors ]; then
-    git clone https://github.com/seebi/dircolors-solarized.git $HOME/.foldercolors 
 fi
 
 # Docker
@@ -96,7 +76,6 @@ sudo apt-get install google-chrome-stable -y
 sudo apt-get install indicator-sysmonitor -y
 
 sudo apt-get install lxc-docker -y
-sudo service docker restart
 
 sudo apt-get install dkms virtualbox-4.3 -y
 sudo apt-get install oracle-java8-installer -y
