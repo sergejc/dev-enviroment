@@ -17,7 +17,7 @@ if [ ! -f $HOME/.nvm/nvm.sh ]; then
     # Packages
     npm install -g grunt-cli bower jade coffee-script express \
         jasmine-node mocha yo browserify beefy gulp react-tools \
-        grunt-init http-server
+        grunt-init http-server jshint
 
     echo "source $HOME/.nvm/nvm.sh" >> $HOME/.zshrc
     echo "nvm use 0.12 >> /dev/null" >> $HOME/.zshrc
