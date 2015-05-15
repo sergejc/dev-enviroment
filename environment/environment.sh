@@ -1,8 +1,13 @@
 #!/bin/bash
 
+if [ -x /usr/bin/zsh ]; then
+    exec /usr/bin/zsh     
+fi
+
 # OH MY ZSHELL
 if [ ! -d $HOME/.oh-my-zsh ]; then
-    git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    #git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+    wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
 fi
 
 if [ ! -f $HOME/.zshrc ]; then
@@ -15,11 +20,15 @@ fi
 if [ ! -f "/usr/bin/gconftool-2" ]; then
     sudo apt-get install gconf2 -y
 fi
-echo "create dark and light gnome terminal profile manualy"
-read tmp
 
-git clone https://github.com/sergejc/gnome-terminal-colors-solarized solarized
-chmod +x solarized/install.sh && solarized/install.sh && solarized/install.sh
+
+if [ ! -d $HOME/solarize ]; then
+    echo "create Dark and Light gnome terminal profile manualy, press Enter"
+    read tmp
+    git clone https://github.com/sergejc/gnome-terminal-colors-solarized $HOME/solarized
+    chmod +x $HOME/solarized/install.sh && $HOME/solarized/install.sh && $HOME/solarized/install.sh
+    rm -rf $HOME/solarized
+fi
 
 # Dircolors
 if [ ! -d $HOME/.foldercolors ]; then
