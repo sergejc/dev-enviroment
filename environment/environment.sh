@@ -1,12 +1,7 @@
 #!/bin/bash
 
-if [ -x /usr/bin/zsh ]; then
-    exec /usr/bin/zsh     
-fi
-
 # OH MY ZSHELL
 if [ ! -d $HOME/.oh-my-zsh ]; then
-    #git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
     wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
 fi
 
