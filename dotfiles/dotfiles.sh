@@ -8,9 +8,3 @@ if [ ! -d $filename ]; then
     echo 'source dotfiles/bash/bashrc' >> $HOME/.zshrc
 fi
 
-# Vim config
-filename=$HOME/.vim/vimrc
-if [ ! -f $filename ]; then
-    git clone https://github.com/sergejc/vimconfig.git $HOME/.vim
-    source $HOME/.vim/install.sh
-fi

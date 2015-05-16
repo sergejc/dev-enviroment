@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# Powerline
+if [ ! -d $HOME/.fonts ]; then
+   mkdir $HOME/.fonts && git clone https://github.com/sergejc/ubuntu-mono-powerline-ttf.git $HOME/.fonts 
+   fc-cache -vf
+fi
+
 # OH MY ZSHELL
 if [ ! -d $HOME/.oh-my-zsh ]; then
-    wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+    git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh 
 fi
 
 if [ ! -f $HOME/.zshrc ]; then
