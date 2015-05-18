@@ -87,8 +87,6 @@ if [ ! -L $filename ]; then
     composer global require 'd11wtq/boris=*'
 fi
 
-# PHP Xdebug
-php -v | grep -q Xdebug || sudo pecl install xdebug
 
 # APACHE php.ini
 PHP_APACHE_INI="/etc/php5/apache2/php.ini"
@@ -100,7 +98,8 @@ if ! grep -q xdebug $PHP_APACHE_INI; then
     sudo sed -i "s|^upload_max_filesize = 2M|upload_max_filesize = 16M|" $PHP_APACHE_INI
     sudo sed -i "s|^; max_input_vars = 1000|max_input_vars = 10000|" $PHP_APACHE_INI
 
-cat << EOF | sudo tee -a $PHP_APACHE_INI
+PHP_XDEBUG_INI="/etc/php5/mods-available/xdebug.ini"
+cat << EOF | sudo tee -a $PHP_XDEBUG_INI
 
 [xdebug]
 zend_extension=xdebug.so
@@ -141,3 +140,6 @@ xdebug.show_local_vars=1
 ; xdebug.scream=1
 EOF
 fi
+
+# PHP Xdebug
+php -v | grep -q Xdebug || sudo pecl install xdebug
