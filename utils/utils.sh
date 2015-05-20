@@ -68,6 +68,15 @@ fi
 ppa='sublime-text-3'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
     sudo add-apt-repository ppa:webupd8team/sublime-text-3 -y
+    wget -P $HOME/.config/sublime-text-3/Packages/User  https://sublime.wbond.net/Package%20Control.sublime-package
+    cat << EOF | sudo tee -a $HOME/.config/sublime-text-3/Packages/User/Package Control.sublime-settings
+{
+    "installed_packages":
+    [
+        "AutoFileName",
+    ]
+}
+EOF
 fi
 
 # KeePassX 
@@ -76,11 +85,18 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
     sudo add-apt-repository ppa:keepassx/daily -y
 fi
 
+ppa='wine'
+if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+    sudo add-apt-repository ppa:ubuntu-wine/ppa -y
+fi
+
+
 sudo apt-get update
 
 sudo apt-get install google-chrome-stable -y
 sudo apt-get install indicator-sysmonitor -y
 sudo apt-get install keepassx -y
+sudo apt-get install wine -y
 
 sudo apt-get install lxc-docker -y
 

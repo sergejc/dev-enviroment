@@ -1,6 +1,6 @@
 #! /bin/bash
 
-source $PWD/os/os.sh
+source $PWD/packages/packages.sh
 #source $PWD/mail/mail.sh
 source $PWD/apache/apache.sh
 source $PWD/utils/utils.sh

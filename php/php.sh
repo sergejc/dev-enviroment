@@ -4,18 +4,18 @@
 locale -a | grep -q en_GB.utf8 || sudo locale-gen en_GB.utf8
 
 # PHP
-filename='/etc/apt/sources.list.d/ondrej-ubuntu-php5-5_6-utopic.list'
-if [ ! -f $filename ]; then
+ppa='ondrej'
+if ! grep -q $ppa /etc/apt/sources.list /etc/apt/sources.list.d/* ; then
     sudo add-apt-repository ppa:ondrej/php5-5.6 -y && sudo apt-get update
-fi
 
-sudo apt-get install \
+    sudo apt-get install \
     php5 php5-cli php5-curl php5-gd php5-json \
     php5-memcache php5-readline php5-sqlite \
     php5-mcrypt php5-memcached php5-mongo \
     php5-mysqlnd php5-dev php5-xsl php5-pgsql \
     php5-imap php5-imagick php5-redis php-pear \
     libapache2-mod-php5 -y
+fi
 
 # Composer
 filename='/usr/local/bin/composer'
@@ -23,7 +23,6 @@ if [ ! -f $filename ]; then
     curl -sS https://getcomposer.org/installer | php
     sudo mv composer.phar $filename 
 fi
-
 
 # PHP Copy/Paste Detector
 filename="$HOME/.composer/vendor/bin/phpcpd" 
@@ -88,58 +87,45 @@ if [ ! -L $filename ]; then
 fi
 
 
+# PHP Xdebug
+PHP_XDEBUG_INI="/etc/php5/mods-available/xdebug.ini"
+if ! grep -q xdebug $PHP_XDEBUG_INI; then
+cat << EOF | sudo tee -a $PHP_XDEBUG_INI
+[xdebug]
+zend_extension=xdebug.so
+
+xdebug.remote_connect_back = 1
+xdebug.remote_enable=true
+xdebug.cli_color=2
+xdebug.show_local_vars=1
+xdebug.max_nesting_level=1000
+; xdebug.scream=1
+; xdebug.profiler_enable=1
+; xdebug.profile_output_dir=/tmp
+EOF
+
+php -v | grep -q Xdebug || sudo pecl install xdebug && sudo php5enmod xdebug
+fi
+
+
 # APACHE php.ini
 PHP_APACHE_INI="/etc/php5/apache2/php.ini"
-if ! grep -q xdebug $PHP_APACHE_INI; then
+if ! grep -q 'max_input_vars = 10000' $PHP_APACHE_INI; then
     sudo sed -i "s|; date.timezone =|date.timezone = Europe/London|" $PHP_APACHE_INI
     sudo sed -i "s|^display_errors = Off|display_errors = On|" $PHP_APACHE_INI
     sudo sed -i "s|^display_startup_errors = Off|display_startup_errors = On|" $PHP_APACHE_INI
     sudo sed -i "s|^post_max_size = 8M|post_max_size = 16M|" $PHP_APACHE_INI
     sudo sed -i "s|^upload_max_filesize = 2M|upload_max_filesize = 16M|" $PHP_APACHE_INI
     sudo sed -i "s|^; max_input_vars = 1000|max_input_vars = 10000|" $PHP_APACHE_INI
-
-PHP_XDEBUG_INI="/etc/php5/mods-available/xdebug.ini"
-cat << EOF | sudo tee -a $PHP_XDEBUG_INI
-
-[xdebug]
-zend_extension=xdebug.so
-
-xdebug.remote_connect_back = 1
-xdebug.remote_enable=true
-xdebug.cli_color=2
-xdebug.show_local_vars=1
-xdebug.max_nesting_level=1000
-; xdebug.scream=1
-; xdebug.profiler_enable=1
-; xdebug.profile_output_dir=/tmp
-EOF
 fi
 
 # CLI php.ini
 PHP_CLI_INI="/etc/php5/cli/php.ini"
-if ! grep -q xdebug $PHP_CLI_INI; then
+if ! grep -q 'max_input_vars = 10000' $PHP_CLI_INI; then
     sudo sed -i "s|; date.timezone =|date.timezone = Europe/London|" $PHP_CLI_INI
     sudo sed -i "s|^display_errors = Off|display_errors = On|" $PHP_CLI_INI
     sudo sed -i "s|^display_startup_errors = Off|display_startup_errors = On|" $PHP_CLI_INI
     sudo sed -i "s|^post_max_size = 8M|post_max_size = 16M|" $PHP_CLI_INI
     sudo sed -i "s|^upload_max_filesize = 2M|upload_max_filesize = 16M|" $PHP_CLI_INI
     sudo sed -i "s|^; max_input_vars = 1000|max_input_vars = 10000|" $PHP_CLI_INI 
-
-cat << EOF | sudo tee -a $PHP_CLI_INI
-
-[xdebug]
-zend_extension=xdebug.so
-
-xdebug.remote_enable=true
-xdebug.remote_connect_back = 1
-xdebug.max_nesting_level=1000
-xdebug.cli_color=2
-xdebug.show_local_vars=1
-; xdebug.profiler_enable=1
-; xdebug.profile_output_dir=/tmp
-; xdebug.scream=1
-EOF
 fi
-
-# PHP Xdebug
-php -v | grep -q Xdebug || sudo pecl install xdebug
