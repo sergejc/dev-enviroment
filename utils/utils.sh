@@ -74,6 +74,23 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
     "installed_packages":
     [
         "AutoFileName",
+        "Emmet",
+        "SublimeLinter",
+        "SideBarEnhancements",
+        "BracketHighlighter",
+        "SublimeCodeIntel",
+        "Alignment",
+        "SFTP",
+        "DocBlockr",
+        "AdvancedNewFile",
+        "Pretty JSON",
+        "HTMLBeautify",
+        "FileDiffs",
+        "Phpcs",
+        "JSLint",
+        "JSHint",
+        "CSSComb",
+        "Trimmer"
     ]
 }
 EOF
