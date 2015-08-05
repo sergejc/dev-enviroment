@@ -90,7 +90,8 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
         "JSLint",
         "JSHint",
         "CSSComb",
-        "Trimmer"
+        "Trimmer",
+        "LiveStyle"
     ]
 }
 EOF
