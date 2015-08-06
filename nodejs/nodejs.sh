@@ -15,7 +15,7 @@ if [ ! -f $HOME/.nvm/nvm.sh ]; then
     nvm install 0.12.0 
 
     # Packages
-    npm install -g grunt-cli bower jade coffee-script express express-generator jasmine-node mocha yo browserify beefy gulp react-tools grunt-init http-server jshint stylus node-sass less autoprefixer clean-css mean-cli requirejs supervisor node-inspector
+    npm install -g grunt-cli bower jade coffee-script express express-generator jasmine-node mocha yo browserify beefy gulp react-tools grunt-init http-server jshint stylus node-sass less autoprefixer clean-css mean-cli requirejs supervisor node-inspector babel
 
     echo "source $HOME/.nvm/nvm.sh" >> $HOME/.zshrc
     echo "nvm use 0.12 >> /dev/null" >> $HOME/.zshrc
