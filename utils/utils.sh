@@ -76,6 +76,7 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
         "AutoFileName",
         "Emmet",
         "LiveStyle",
+        "Babel",
         "SublimeLinter",
         "SideBarEnhancements",
         "BracketHighlighter",
@@ -93,7 +94,9 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
         "CSS3",
         "ColorHighlighter",
         "Git",
-        "JsFormat"
+        "JsFormat",
+        "Handlebars"
+
     ]
 }
 EOF
