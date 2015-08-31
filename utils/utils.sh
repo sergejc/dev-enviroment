@@ -75,6 +75,7 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
     [
         "AutoFileName",
         "Emmet",
+        "LiveStyle",
         "SublimeLinter",
         "SideBarEnhancements",
         "BracketHighlighter",
@@ -86,15 +87,28 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
         "Pretty JSON",
         "HTMLBeautify",
         "FileDiffs",
-        "Phpcs",
         "JSLint",
-        "JSHint",
         "CSSComb",
         "Trimmer",
-        "LiveStyle"
+        "CSS3",
+        "ColorHighlighter",
+        "Git",
+        "JsFormat"
     ]
 }
 EOF
+
+    cat << EOF | sudo tee -a $HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
+{
+    nt_size": 11,
+    "ignored_packages":
+    [],
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+    "vintage_ctrl_keys": true
+}
+EOF
+
 fi
 
 # KeePassX 
