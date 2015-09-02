@@ -99,6 +99,7 @@ xdebug.remote_enable=true
 xdebug.cli_color=2
 xdebug.show_local_vars=1
 xdebug.max_nesting_level=1000
+xdebug.remote_autostart=1
 ; xdebug.scream=1
 ; xdebug.profiler_enable=1
 ; xdebug.profile_output_dir=/tmp
