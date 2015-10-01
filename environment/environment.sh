@@ -15,6 +15,7 @@ if [ ! -f $HOME/.zshrc ]; then
     cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
     sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="agnoster"/' $HOME/.zshrc
     sed -i 's/^plugins=(.*)/plugins=(git laravel vagrant foo)/g' $HOME/.zshrc
+    echo "set -o vi" >> $HOME/.zshrc
 fi
 
 # Solarized Colorscheme

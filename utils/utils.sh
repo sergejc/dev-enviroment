@@ -103,7 +103,7 @@ EOF
 
     cat << EOF | sudo tee -a $HOME/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 {
-    nt_size": 11,
+    "font_size": 11,
     "ignored_packages":
     [],
     "tab_size": 4,
