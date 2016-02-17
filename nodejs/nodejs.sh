@@ -14,14 +14,32 @@ if [ ! -f $HOME/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
     nvm install 5.3.0
 
-    # Packages
-    npm install -g bower jade express supervisor babel express-generator react-tools http-server mean-cli node-inspector
+    # packages
+    npm install -g supervisor react-tools http-server node-inspector
+
+    # express
+    npm install -g express express-generator
+
+    # mean
+    npm install -g mean-cli
+
+    # template engine
+    npm install -g jade
+
+    # package management
+    npm install -g bower requirejs jspm
+
+    # transpilers
+    npm install -g babel traceur
 
     # build tools
-    npm install -g yo browserify gulp requirejs jspm webpack grunt-init grunt-cli
+    npm install -g browserify gulp webpack grunt-init grunt-cli
 
     # css processors
     npm install -g stylus less node-sass clean-css
+
+    # generators
+    npm install -g yo
 
     # test tools
     npm install -g mocha eslint jasmine-node
