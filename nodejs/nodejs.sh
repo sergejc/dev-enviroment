@@ -33,7 +33,7 @@ if [ ! -f $HOME/.nvm/nvm.sh ]; then
     npm install -g babel traceur
 
     # build tools
-    npm install -g browserify gulp webpack grunt-init grunt-cli
+    npm install -g browserify gulp webpack grunt-init grunt-cl rollup
 
     # css processors
     npm install -g stylus less node-sass clean-css
