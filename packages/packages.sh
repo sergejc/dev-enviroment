@@ -6,7 +6,7 @@ sudo apt-get update && sudo apt-get install ugrade -y
 sudo locale-gen en_GB.utf8
 
 sudo apt-get install \
-    pv exuberant-ctags git htop aptitude \
+    pv exuberant-ctags git tig htop aptitude \
     zsh vim mc xvfb unzip curl build-essential \
     software-properties-common xclip tree \
     wget memcached apache2-utils libssl-dev \
