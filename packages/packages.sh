@@ -13,4 +13,4 @@ sudo apt-get install \
     apt-transport-https iftop unity-tweak-tool dconf-cli \
     tmux nmap elinks openssl ca-certificates rlwrap \
     net-tools python-pip python-dev netcat sshfs \
-    sshpass keychain whois silversearcher-ag  pstree -y 
+    sshpass keychain whois silversearcher-ag -y
