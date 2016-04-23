@@ -7,46 +7,26 @@ if [ ! -f $filename ]; then
     sudo apt-get install nodejs -y
 fi
 
-# NVM
-if [ ! -f $HOME/.nvm/nvm.sh ]; then
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
+# packages
+sudo npm install -g supervisor node-inspector
 
-    source ~/.nvm/nvm.sh
-    nvm install 5.3.0
+# express
+sudo npm install -g express express-generator
 
-    # packages
-    npm install -g supervisor react-tools http-server node-inspector
+# template engine
+sudo npm install -g pug
 
-    # express
-    npm install -g express express-generator
+# package management
+sudo npm install -g bower requirejs jspm
 
-    # mean
-    npm install -g mean-cli
+# build tools
+sudo npm install -g browserify gulp webpack rollup
 
-    # template engine
-    npm install -g jade
+# css processors
+sudo npm install -g node-sass clean-css
 
-    # package management
-    npm install -g bower requirejs jspm
+# generators
+sudo npm install -g yo
 
-    # transpilers
-    npm install -g babel traceur
-
-    # build tools
-    npm install -g browserify gulp webpack grunt-init grunt-cl rollup
-
-    # css processors
-    npm install -g stylus less node-sass clean-css
-
-    # generators
-    npm install -g yo
-
-    # test tools
-    npm install -g mocha eslint jasmine-node
-
-
-    echo "source $HOME/.nvm/nvm.sh" >> $HOME/.zshrc
-    echo "nvm use 5.3.0 >> /dev/null" >> $HOME/.zshrc
-
-fi
-
+# test tools
+sudo npm install -g mocha eslint jasmine-node
