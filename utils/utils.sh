@@ -135,6 +135,6 @@ sudo apt-get install wine -y
 
 sudo apt-get install lxc-docker -y
 
-sudo apt-get install dkms virtualbox-4.3 -y
+sudo apt-get install dkms virtualbox -y
 sudo apt-get install oracle-java8-installer -y
 sudo apt-get install sublime-text-installer -y
