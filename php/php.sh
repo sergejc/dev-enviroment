@@ -3,19 +3,12 @@
 # Locale
 locale -a | grep -q en_GB.utf8 || sudo locale-gen en_GB.utf8
 
-# PHP
-ppa='ondrej'
-if ! grep -q $ppa /etc/apt/sources.list /etc/apt/sources.list.d/* ; then
-    sudo add-apt-repository ppa:ondrej/php5-5.6 -y && sudo apt-get update
-
-    sudo apt-get install \
-    php5 php5-cli php5-curl php5-gd php5-json \
-    php5-memcache php5-readline php5-sqlite \
-    php5-mcrypt php5-memcached php5-mongo \
-    php5-mysqlnd php5-dev php5-xsl php5-pgsql \
-    php5-imap php5-imagick php5-redis php-pear \
-    libapache2-mod-php5 -y
-fi
+sudo apt-get install \
+php php7.0-curl php7.0-gd \
+php7.0-sqlite3 php7.0-mcrypt php-memcached \
+php7.0-mysql php7.0-dev php7.0-pgsql \
+php7.0-imap php-redis php-pear \
+libapache2-mod-php7.0 -y
 
 # Composer
 filename='/usr/local/bin/composer'
@@ -88,7 +81,7 @@ fi
 
 
 # PHP Xdebug
-PHP_XDEBUG_INI="/etc/php5/mods-available/xdebug.ini"
+PHP_XDEBUG_INI="/etc/php/7.0/mods-available/xdebug.ini"
 if ! grep -q xdebug $PHP_XDEBUG_INI; then
 cat << EOF | sudo tee -a $PHP_XDEBUG_INI
 [xdebug]
@@ -105,12 +98,12 @@ xdebug.remote_autostart=1
 ; xdebug.profile_output_dir=/tmp
 EOF
 
-php -v | grep -q Xdebug || sudo pecl install xdebug && sudo php5enmod xdebug
+php -v | grep -q Xdebug || sudo pecl install xdebug && sudo phpenmod xdebug
 fi
 
 
 # APACHE php.ini
-PHP_APACHE_INI="/etc/php5/apache2/php.ini"
+PHP_APACHE_INI="/etc/php/7.0/apache2/php.ini"
 if ! grep -q 'max_input_vars = 10000' $PHP_APACHE_INI; then
     sudo sed -i "s|; date.timezone =|date.timezone = Europe/London|" $PHP_APACHE_INI
     sudo sed -i "s|^display_errors = Off|display_errors = On|" $PHP_APACHE_INI
@@ -121,7 +114,7 @@ if ! grep -q 'max_input_vars = 10000' $PHP_APACHE_INI; then
 fi
 
 # CLI php.ini
-PHP_CLI_INI="/etc/php5/cli/php.ini"
+PHP_CLI_INI="/etc/php/7.0/cli/php.ini"
 if ! grep -q 'max_input_vars = 10000' $PHP_CLI_INI; then
     sudo sed -i "s|; date.timezone =|date.timezone = Europe/London|" $PHP_CLI_INI
     sudo sed -i "s|^display_errors = Off|display_errors = On|" $PHP_CLI_INI
