@@ -13,63 +13,91 @@ libapache2-mod-php7.0 -y
 # Composer
 filename='/usr/local/bin/composer'
 if [ ! -f $filename ]; then
+    echo "composer"
     curl -sS https://getcomposer.org/installer | php
-    sudo mv composer.phar $filename 
-fi
-
-# PHP Copy/Paste Detector
-filename="$HOME/.composer/vendor/bin/phpcpd" 
-if [ ! -L $filename ]; then
-    echo "php copy/past detector"
-    composer global require 'sebastian/phpcpd=*'
+    sudo mv composer.phar $filename
 fi
 
 # PHP_CodeSniffer
-filename="$HOME/.composer/vendor/bin/phpcs"
+filename="/usr/local/bin/phpcs"
 if [ ! -L $filename ]; then
-    echo "php codesniffer"
-    composer global require "squizlabs/php_codesniffer=*"
+    echo "php codesniffer (phpcs)"
+    wget https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+    chmod u+x phpcs.phar
+    sudo mv phpcs.phar $filename
 fi
 
-filename="$HOME/.composer/vendor/bin/phpcbf"
+# PHP_CodeSniffer
+filename="/usr/local/bin/phpcbf"
 if [ ! -L $filename ]; then
-    echo "php codesniffer"
-    composer global require "squizlabs/php_codesniffer=*"
-fi
-
-# Codecept
-filename="$HOME/.composer/vendor/bin/codecept"
-if [ ! -L $filename ]; then
-    echo "codeception"
-    composer global require 'codeception/codeception=*'
+    echo "php codesniffer (phpcbf)"
+    wget https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
+    chmod u+x phpcbf.phar
+    sudo mv phpcbf.phar $filename
 fi
 
 # PHPUnit
-filename="$HOME/.composer/vendor/bin/phpunit"
+filename="/usr/local/bin/phpunit"
 if [ ! -L $filename ]; then
     echo "phpunit"
-    composer global require "phpunit/phpunit=*"
+    wget https://phar.phpunit.de/phpunit.phar
+    chmod u+x phpunit.phar
+    sudo mv phpunit.phar $filename
 fi
 
-# PHP Mess Detector
-filename="$HOME/.composer/vendor/bin/phpmd"
+# PHP Copy/Paste Detector
+filename="/usr/local/bin/phpcpd"
 if [ ! -L $filename ]; then
-    echo "php mess detector"
-    composer global require "phpmd/phpmd"
+    echo "php copy/past detector"
+    wget https://phar.phpunit.de/phpcpd.phar
+    chmod u+x phpcpd.phar
+    sudo mv phpcpd.phar $filename
+fi
+
+
+# phpDox - The PHP Documentation Generator
+filename="/usr/local/bin/phpdox"
+if [ ! -L $filename ]; then
+    echo "phpDox "
+    wget http://phpdox.de/releases/phpdox.phar
+    chmod u+x phpdox.phar
+    sudo mv phpdox.phar $filename
+fi
+
+# PDepend
+filename="/usr/local/bin/pdepend"
+if [ ! -L $filename ]; then
+    echo "pdepend"
+    wget http://static.pdepend.org/php/latest/pdepend.phar
+    chmod u+x pdepend.phar
+    sudo mv pdepend.phar $filename
 fi
 
 # PHPLOC
-filename="$HOME/.composer/vendor/bin/phploc"
+filename="/usr/local/bin/phploc"
 if [ ! -L $filename ]; then
     echo "phploc"
-    composer global require 'phploc/phploc=*'
+    wget https://phar.phpunit.de/phploc.phar
+    chmod u+x phploc.phar
+    sudo mv phploc.phar $filename
+fi
+
+# PHP Mess Detector
+filename="/usr/local/bin/phpmd"
+if [ ! -L $filename ]; then
+    echo "php mess detector"
+    wget http://static.phpmd.org/php/latest/phpmd.phar
+    chmod u+x phpmd.phar
+    sudo mv phpmd.phar $filename
 fi
 
 # PHP Dead Code Detector
-filename="$HOME/.composer/vendor/bin/phpdcd"
+filename="/usr/local/bin/phpdcd"
 if [ ! -L $filename ]; then
     echo "php dead code detector"
-    composer global require 'sebastian/phpdcd=*'
+    wget https://phar.phpunit.de/phpdcd.phar
+    chmod u+x phpdcd.phar
+    mv phpdcd.phar $filename
 fi
 
 # Boris CLI
