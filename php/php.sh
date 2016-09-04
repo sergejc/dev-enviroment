@@ -8,6 +8,7 @@ php php7.0-curl php7.0-gd \
 php7.0-sqlite3 php7.0-mcrypt php-memcached \
 php7.0-mysql php7.0-dev php7.0-pgsql \
 php7.0-imap php-redis php-pear \
+php7.0-mbstring php7.0-bz2 php7.0-zip
 libapache2-mod-php7.0 -y
 
 # Composer
@@ -54,7 +55,6 @@ if [ ! -L $filename ]; then
     sudo mv phpcpd.phar $filename
 fi
 
-
 # phpDox - The PHP Documentation Generator
 filename="/usr/local/bin/phpdox"
 if [ ! -L $filename ]; then
@@ -97,7 +97,7 @@ if [ ! -L $filename ]; then
     echo "php dead code detector"
     wget https://phar.phpunit.de/phpdcd.phar
     chmod u+x phpdcd.phar
-    mv phpdcd.phar $filename
+    sudo mv phpdcd.phar $filename
 fi
 
 # Boris CLI
