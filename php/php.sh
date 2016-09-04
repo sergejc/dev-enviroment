@@ -8,7 +8,7 @@ php php7.0-curl php7.0-gd \
 php7.0-sqlite3 php7.0-mcrypt php-memcached \
 php7.0-mysql php7.0-dev php7.0-pgsql \
 php7.0-imap php-redis php-pear \
-php7.0-mbstring php7.0-bz2 php7.0-zip
+php7.0-mbstring php7.0-bz2 php7.0-zip \
 libapache2-mod-php7.0 -y
 
 # Composer
@@ -21,7 +21,7 @@ fi
 
 # PHP_CodeSniffer
 filename="/usr/local/bin/phpcs"
-if [ ! -L $filename ]; then
+if [ ! -f $filename ]; then
     echo "php codesniffer (phpcs)"
     wget https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
     chmod u+x phpcs.phar
@@ -30,7 +30,7 @@ fi
 
 # PHP_CodeSniffer
 filename="/usr/local/bin/phpcbf"
-if [ ! -L $filename ]; then
+if [ ! -f $filename ]; then
     echo "php codesniffer (phpcbf)"
     wget https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
     chmod u+x phpcbf.phar
@@ -39,7 +39,7 @@ fi
 
 # PHPUnit
 filename="/usr/local/bin/phpunit"
-if [ ! -L $filename ]; then
+if [ ! -f $filename ]; then
     echo "phpunit"
     wget https://phar.phpunit.de/phpunit.phar
     chmod u+x phpunit.phar
@@ -48,7 +48,7 @@ fi
 
 # PHP Copy/Paste Detector
 filename="/usr/local/bin/phpcpd"
-if [ ! -L $filename ]; then
+if [ ! -f $filename ]; then
     echo "php copy/past detector"
     wget https://phar.phpunit.de/phpcpd.phar
     chmod u+x phpcpd.phar
@@ -57,7 +57,7 @@ fi
 
 # phpDox - The PHP Documentation Generator
 filename="/usr/local/bin/phpdox"
-if [ ! -L $filename ]; then
+if [ ! -f $filename ]; then
     echo "phpDox "
     wget http://phpdox.de/releases/phpdox.phar
     chmod u+x phpdox.phar
@@ -66,7 +66,7 @@ fi
 
 # PDepend
 filename="/usr/local/bin/pdepend"
-if [ ! -L $filename ]; then
+if [ ! -f $filename ]; then
     echo "pdepend"
     wget http://static.pdepend.org/php/latest/pdepend.phar
     chmod u+x pdepend.phar
@@ -75,7 +75,7 @@ fi
 
 # PHPLOC
 filename="/usr/local/bin/phploc"
-if [ ! -L $filename ]; then
+if [ ! -f $filename ]; then
     echo "phploc"
     wget https://phar.phpunit.de/phploc.phar
     chmod u+x phploc.phar
@@ -84,7 +84,7 @@ fi
 
 # PHP Mess Detector
 filename="/usr/local/bin/phpmd"
-if [ ! -L $filename ]; then
+if [ ! -f $filename ]; then
     echo "php mess detector"
     wget http://static.phpmd.org/php/latest/phpmd.phar
     chmod u+x phpmd.phar
@@ -93,7 +93,7 @@ fi
 
 # PHP Dead Code Detector
 filename="/usr/local/bin/phpdcd"
-if [ ! -L $filename ]; then
+if [ ! -f $filename ]; then
     echo "php dead code detector"
     wget https://phar.phpunit.de/phpdcd.phar
     chmod u+x phpdcd.phar
@@ -101,7 +101,7 @@ if [ ! -L $filename ]; then
 fi
 
 # Boris CLI
-filename="$HOME/.composer/vendor/bin/boris"
+filename="$HOME/.config/composer/vendor/bin/boris"
 if [ ! -L $filename ]; then
     echo "boris"
     composer global require 'd11wtq/boris=*'
@@ -109,9 +109,9 @@ fi
 
 
 # PHP Xdebug
-PHP_XDEBUG_INI="/etc/php/7.0/mods-available/xdebug.ini"
-if ! grep -q xdebug $PHP_XDEBUG_INI; then
-cat << EOF | sudo tee -a $PHP_XDEBUG_INI
+filename="/etc/php/7.0/mods-available/xdebug.ini"
+if [ ! -L $filename ]; then
+cat << EOF | sudo tee -a $filename
 [xdebug]
 zend_extension=xdebug.so
 
