@@ -10,7 +10,7 @@ if [ ! -f $filename ]; then
     sudo npm install -g supervisor node-inspector
 
     # servers
-    sudo npm install -g webpack-dev-server express
+    sudo npm install -g webpack-dev-server express node-static
 
     # package management
     sudo npm install -g bower requirejs jspm
