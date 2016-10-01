@@ -2,20 +2,19 @@
 
 # Powerline
 if [ ! -d $HOME/.fonts ]; then
-   mkdir $HOME/.fonts && git clone https://github.com/sergejc/ubuntu-mono-powerline-ttf.git $HOME/.fonts 
+   mkdir $HOME/.fonts && git clone https://github.com/sergejc/ubuntu-mono-powerline-ttf.git $HOME/.fonts
    fc-cache -vf
 fi
 
 # OH MY ZSHELL
 if [ ! -d $HOME/.oh-my-zsh ]; then
-    git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh 
+    git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 fi
 
 if [ ! -f $HOME/.zshrc ]; then
     cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
     sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="agnoster"/' $HOME/.zshrc
     sed -i 's/^plugins=(.*)/plugins=(git laravel vagrant foo)/g' $HOME/.zshrc
-    echo "set -o vi" >> $HOME/.zshrc
 fi
 
 # Solarized Colorscheme
@@ -34,7 +33,7 @@ fi
 
 # Dircolors
 if [ ! -d $HOME/.foldercolors ]; then
-    git clone https://github.com/sergejc/dircolors-solarized $HOME/.foldercolors 
+    git clone https://github.com/sergejc/dircolors-solarized $HOME/.foldercolors
 fi
 
 # MC solarized
@@ -46,5 +45,4 @@ fi
 if [ ! -d $HOME/.fzf ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
-
 fi
