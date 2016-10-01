@@ -71,32 +71,33 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
     mkdir -p $HOME/.config/sublime-text-3/Packages/User
     cat << EOF | tee -a $HOME/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
 {
-    "installed_packages":
-    [
-        "AutoFileName",
-        "Emmet",
-        "LiveStyle",
-        "Babel",
-        "SublimeLinter",
-        "SideBarEnhancements",
-        "BracketHighlighter",
-        "SublimeCodeIntel",
-        "Alignment",
-        "SFTP",
-        "DocBlockr",
+        "bootstrapped": true,
+        "in_process_packages": [],
+        "installed_packages":
+        [
         "AdvancedNewFile",
-        "Pretty JSON",
-        "HTMLBeautify",
-        "FileDiffs",
-        "JSLint",
-        "CSSComb",
-        "Trimmer",
+        "Alignment",
+        "AutoFileName",
+        "Babel",
+        "BracketHighlighter",
         "CSS3",
-        "ColorHighlighter",
+        "DocBlockr",
+        "Emmet",
+        "FileDiffs",
         "Git",
+        "Handlebars",
+        "HTMLBeautify",
         "JsFormat",
-        "Handlebars"
-    ]
+        "JSLint",
+        "LiveStyle",
+        "Package Reloader",
+        "Pretty JSON",
+        "SFTP",
+        "SideBarEnhancements",
+        "SublimeCodeIntel",
+        "SublimeLinter",
+        "Trimmer"
+        ]
 }
 EOF
 
