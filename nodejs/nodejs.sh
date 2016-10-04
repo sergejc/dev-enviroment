@@ -12,14 +12,17 @@ if [ ! -f $filename ]; then
     # servers
     sudo npm install -g webpack-dev-server express node-static
 
+    # module loader
+    sudo npm install -g requirejs
+
     # package management
-    sudo npm install -g bower requirejs jspm
+    sudo npm install -g jspm
 
     # build tools
-    sudo npm install -g browserify gulp webpack rollup
+    sudo npm install -g gulp webpack rollup
 
     # generators
-    sudo npm install -g yo create-react-app express-generator
+    sudo npm install -g yo create-react-app
 
     # test tools
     sudo npm install -g mocha eslint jasmine-node karma-cli
