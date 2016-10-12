@@ -6,6 +6,9 @@ if [ ! -f $filename ]; then
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
     sudo apt-get install nodejs -y
 
+    # package manager
+    sudo npm install -g yarn
+
     # packages
     sudo npm install -g supervisor node-inspector
 
