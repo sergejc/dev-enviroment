@@ -19,7 +19,7 @@ fi
 
 # Solarized Colorscheme
 if [ ! -f "/usr/bin/gconftool-2" ]; then
-    sudo apt-get install gconf2 -y
+    sudo apt install gconf2 -y
 fi
 
 

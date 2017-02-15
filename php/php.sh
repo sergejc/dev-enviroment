@@ -3,7 +3,7 @@
 # Locale
 locale -a | grep -q en_GB.utf8 || sudo locale-gen en_GB.utf8
 
-sudo apt-get install \
+sudo apt install \
 php php7.0-curl php7.0-gd \
 php7.0-sqlite3 php7.0-mcrypt php-memcached \
 php7.0-mysql php7.0-dev php7.0-pgsql \

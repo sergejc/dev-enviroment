@@ -22,12 +22,6 @@ if ! hash pip 2&> /dev/null; then
     sudo apt install python-pip -y
 fi
 
-# SysMonitor Indicator
-ppa='fossfreedom'
-if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
-    sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor -y
-fi
-
 if ! grep -q "^$USER.*zsh" /etc/passwd; then
     chsh -s $(which zsh) $USER
 fi
@@ -35,8 +29,8 @@ fi
 # Docker
 ppa='docker'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
-    sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-    sudo sh -c 'echo "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -sc) main" >> /etc/apt/sources.list.d/docker.list'
+    curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb https://apt.dockerproject.org/repo/ubuntu-$(lsb_release -cs) main"
 fi
 
 if ! grep -q "docker.*$USER" /etc/group; then
@@ -113,17 +107,16 @@ EOF
 
 fi
 
-sudo apt-get update
+sudo apt update
 
-sudo apt-get install google-chrome-stable -y
-sudo apt-get install indicator-sysmonitor -y
-sudo apt-get install keepassx -y
-sudo apt-get install wine -y
+sudo apt install google-chrome-stable -y
+sudo apt install keepassx -y
+sudo apt install wine-stable -y
 
-sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
-sudo apt-get install docker-engine -y
+sudo apt install linux-image-extra-$(uname -r) linux-image-extra-virtual
+sudo apt install docker-engine -y
 sudo service docker start
 
-sudo apt-get install dkms virtualbox -y
-sudo apt-get install oracle-java8-installer -y
-sudo apt-get install sublime-text-installer -y
+sudo apt install dkms virtualbox -y
+sudo apt install oracle-java8-installer -y
+sudo apt install sublime-text-installer -y
