@@ -5,7 +5,7 @@ sudo apt update && sudo apt install ugrade -y
 # Locale
 sudo locale-gen en_GB.utf8
 
-sudo apt-get install \
+sudo apt install \
     pv exuberant-ctags git tig htop aptitude \
     zsh vim mc xvfb unzip curl build-essential \
     software-properties-common xclip tree golang \

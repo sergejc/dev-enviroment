@@ -2,7 +2,7 @@
 
 
 # Mutt
-sudo apt-get install mutt
+sudo apt install mutt
 
 # Install email
 echo "enter user name"
