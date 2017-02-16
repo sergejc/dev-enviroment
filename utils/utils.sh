@@ -119,5 +119,6 @@ sudo apt install docker-engine -y
 sudo service docker start
 
 sudo apt install dkms virtualbox -y
+sudo apt install vagrant
 sudo apt install oracle-java8-installer -y
 sudo apt install sublime-text-installer -y
