@@ -30,19 +30,12 @@ fi
 ppa='docker'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
     curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb https://apt.dockerproject.org/repo/ubuntu-$(lsb_release -cs) main"
+    sudo add-apt-repository "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -cs) main"
 fi
 
 if ! grep -q "docker.*$USER" /etc/group; then
     sudo groupadd docker
     sudo usermod -aG docker $USER
-fi
-
-# VirtualBox
-ppa='virtualbox'
-if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
-    wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-    sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" >> /etc/apt/sources.list.d/virtualbox.list'
 fi
 
 # Java
@@ -55,13 +48,21 @@ fi
 ppa='google'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
     wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+fi
+
+
+# VirtualBox
+ppa='virtualbox'
+if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+    wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+    sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" >> /etc/apt/sources.list.d/virtualbox.list'
 fi
 
 # Sublime 3
 ppa='sublime-text-3'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
-    sudo add-apt-repository ppa:webupd8team/sublime-text-3 -y
+    sudo add-apt-repository ppa:webupd8team/sublime-text-3
     mkdir -p $HOME/.config/sublime-text-3/Packages/User
     cat << EOF | tee -a $HOME/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
 {
