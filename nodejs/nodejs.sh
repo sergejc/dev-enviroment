@@ -12,7 +12,7 @@ if [ ! -f $filename ]; then
     sudo npm install -g yarn
 
     # packages
-    sudo yarn global add supervisor node-inspector browser-sync
+    sudo yarn global add supervisor browser-sync
 
     # servers
     sudo yarn global add webpack-dev-server express node-static http-server live-server
@@ -31,4 +31,5 @@ if [ ! -f $filename ]; then
 
     # linters
     sudo yarn global add -g eslint
+
 fi
