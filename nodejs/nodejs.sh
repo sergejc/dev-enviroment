@@ -12,23 +12,23 @@ if [ ! -f $filename ]; then
     sudo npm install -g yarn
 
     # packages
-    sudo npm install -g supervisor node-inspector browser-sync
+    sudo yarn global add supervisor node-inspector browser-sync
 
     # servers
-    sudo npm install -g webpack-dev-server express node-static http-server live-server
+    sudo yarn global add webpack-dev-server express node-static http-server live-server
 
     # tunnels
-    sudo npm install -g localtunnel ngrok
+    sudo yarn global add localtunnel ngrok
 
     # build tools
-    sudo npm install -g gulp webpack rollup jspm
+    sudo yarn global add gulp webpack rollup jspm
 
     # generators
-    sudo npm install -g yo create-react-app
+    sudo yarn global add yo create-react-app
 
     # test tools
-    sudo npm install -g mocha jasmine-node karma-cli
+    sudo yarn global add mocha jasmine-node karma-cli
 
     # linters
-    sudo npm install -g eslint
+    sudo yarn global add -g eslint
 fi
