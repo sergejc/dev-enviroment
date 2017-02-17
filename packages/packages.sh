@@ -8,10 +8,10 @@ sudo locale-gen en_GB.utf8
 sudo apt install \
     pv exuberant-ctags git tig htop aptitude \
     zsh vim mc xvfb unzip curl build-essential \
-    software-properties-common xclip tree golang \
+    software-properties-common xclip tree rlwrap \
     iftop wget libssl-dev apt-transport-https \
     apache2-utils unity-tweak-tool dconf-cli \
-    tmux nmap elinks openssl ca-certificates rlwrap \
+    tmux nmap elinks openssl ca-certificates \
     net-tools python-pip python-dev netcat sshfs \
     sshpass keychain whois silversearcher-ag -y
 

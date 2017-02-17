@@ -2,9 +2,9 @@
 
 source $PWD/packages/packages.sh
 
-read -p "Install Mutt (y/n)?" CONT
+read -p "Install Golang (y/n)?" CONT
 if [ "$CONT" == "y" ]; then
-    source $PWD/mail/mail.sh
+    source $PWD/golang/golang.sh
 fi
 
 read -p "Install Apache (y/n)?" CONT
