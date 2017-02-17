@@ -13,17 +13,9 @@ git config --local core.editor vim
 git config --local color.ui auto
 git config --global core.filemode false
 
-# ZSH
-if ! hash zsh 2&> /dev/null; then
-    sudo apt install zsh -y
-fi
 
 if ! hash pip 2&> /dev/null; then
     sudo apt install python-pip -y
-fi
-
-if ! grep -q "^$USER.*zsh" /etc/passwd; then
-    sudo chsh -s $(which zsh) $USER
 fi
 
 # Docker
