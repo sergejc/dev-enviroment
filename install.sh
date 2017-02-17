@@ -47,6 +47,11 @@ if [ "$CONT" == "y" ]; then
     source $PWD/vim/vim.sh
 fi
 
+read -p "Install Tmux (y/n)?" CONT
+if [ "$CONT" == "y" ]; then
+    source $PWD/tmux/tmux.sh
+fi
+
 read -p "Update SSH config (y/n)?" CONT
 if [ "$CONT" == "y" ]; then
     source $PWD/ssh/ssh.sh

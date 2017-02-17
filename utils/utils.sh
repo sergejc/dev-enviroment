@@ -28,7 +28,7 @@ fi
 
 # Docker
 ppa='docker'
-if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
     curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
     sudo add-apt-repository "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -cs) main"
 fi
@@ -40,13 +40,13 @@ fi
 
 # Java
 ppa='java'
-if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
     sudo apt-add-repository ppa:webupd8team/java -y
 fi
 
 # Google Chrome
 ppa='google'
-if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
     wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 fi
@@ -54,14 +54,14 @@ fi
 
 # VirtualBox
 ppa='virtualbox'
-if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
     wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
     sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" >> /etc/apt/sources.list.d/virtualbox.list'
 fi
 
 # Sublime 3
 ppa='sublime-text-3'
-if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
     sudo add-apt-repository ppa:webupd8team/sublime-text-3
     mkdir -p $HOME/.config/sublime-text-3/Packages/User
     cat << EOF | tee -a $HOME/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
@@ -108,14 +108,16 @@ EOF
 
 fi
 
-sudo apt update google-chrome-stable \
-                keepassx \
-                wine-stable \
-                docker-engine \
-                dkms virtualbox \
-                vagrant \
-                oracle-java8-installer \
-                sublime-text-installer -y
+sudo apt update
+sudo apt install -y \
+    google-chrome-stable \
+    keepassx \
+    wine-stable \
+    docker-engine \
+    dkms virtualbox \
+    vagrant \
+    oracle-java8-installer \
+    sublime-text-installer
 
 sudo service docker start
 sudo apt autoremove -y
