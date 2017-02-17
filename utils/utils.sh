@@ -23,7 +23,7 @@ if ! hash pip 2&> /dev/null; then
 fi
 
 if ! grep -q "^$USER.*zsh" /etc/passwd; then
-    chsh -s $(which zsh) $USER
+    sudo chsh -s $(which zsh) $USER
 fi
 
 # Docker
@@ -48,7 +48,7 @@ fi
 ppa='google'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
     wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 fi
 
 
@@ -108,17 +108,13 @@ EOF
 
 fi
 
-sudo apt update
+sudo apt update google-chrome-stable \
+                keepassx \
+                wine-stable \
+                docker-engine \
+                dkms virtualbox \
+                vagrant \
+                oracle-java8-installer \
+                sublime-text-installer -y
 
-sudo apt install google-chrome-stable -y
-sudo apt install keepassx -y
-sudo apt install wine-stable -y
-
-sudo apt install linux-image-extra-$(uname -r) linux-image-extra-virtual
-sudo apt install docker-engine -y
 sudo service docker start
-
-sudo apt install dkms virtualbox -y
-sudo apt install vagrant -y
-sudo apt install oracle-java8-installer -y
-sudo apt install sublime-text-installer -y
