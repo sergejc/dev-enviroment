@@ -151,3 +151,5 @@ if ! grep -q 'max_input_vars = 10000' $PHP_CLI_INI; then
     sudo sed -i "s|^upload_max_filesize = 2M|upload_max_filesize = 16M|" $PHP_CLI_INI
     sudo sed -i "s|^; max_input_vars = 1000|max_input_vars = 10000|" $PHP_CLI_INI 
 fi
+
+sudo apt autoremove -y

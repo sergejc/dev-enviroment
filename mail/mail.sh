@@ -50,3 +50,5 @@ macro index gd '=[Google Mail]/Drafts' 'Go to drafts'
 EOF
 
 chmod 700 $HOME/.muttrc
+
+sudo apt autoremove -y

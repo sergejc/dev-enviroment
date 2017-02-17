@@ -118,3 +118,4 @@ sudo apt update google-chrome-stable \
                 sublime-text-installer -y
 
 sudo service docker start
+sudo apt autoremove -y

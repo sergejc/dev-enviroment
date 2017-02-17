@@ -5,6 +5,7 @@ filename='/etc/apt/sources.list.d/nodesource.list'
 if [ ! -f $filename ]; then
     curl -sL https://deb.nodesource.com/setup_7.x | sudo bash -
     sudo apt install nodejs -y
+    sudo apt autoremove -y
 
     mkdir $HOME/.npm-global
 
@@ -31,5 +32,4 @@ if [ ! -f $filename ]; then
 
     # linters
     sudo yarn global add -g eslint
-
 fi

@@ -5,3 +5,5 @@ if [ ! -d $HOME/tmux-powerline ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     cat $(dirname $0)/tmux.conf > $HOME/.tmux.conf
 fi
+
+sudo apt autoremove -y
