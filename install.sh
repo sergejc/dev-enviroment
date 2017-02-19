@@ -17,6 +17,11 @@ if [ "$CONT" == "y" ]; then
     source $PWD/utils/utils.sh
 fi
 
+read -p "Install Clojure (y/n)?" CONT
+if [ "$CONT" == "y" ]; then
+    source $PWD/clojure/clojure.sh
+fi
+
 read -p "Install PHP(y/n)?" CONT
 if [ "$CONT" == "y" ]; then
     source $PWD/php/php.sh
