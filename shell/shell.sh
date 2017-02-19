@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Zsh
+if ! hash zsh 2&> /dev/null; then
+    sudo apt install zsh -y
+fi
+
+if ! grep -q "^$USER.*zsh" /etc/passwd; then
+    sudo chsh -s $(which zsh) $USER
+fi
+
 # Powerline
 if [ ! -d $HOME/.fonts ]; then
    mkdir $HOME/.fonts && git clone https://github.com/sergejc/ubuntu-mono-powerline-ttf.git $HOME/.fonts
@@ -14,7 +23,7 @@ fi
 if [ ! -f $HOME/.zshrc ]; then
     cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
     sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="agnoster"/' $HOME/.zshrc
-    sed -i 's/^plugins=(.*)/plugins=(git laravel vagrant foo)/g' $HOME/.zshrc
+    sed -i 's/^plugins=(.*)/plugins=(git laravel vagrant)/g' $HOME/.zshrc
 fi
 
 # Solarized Colorscheme
