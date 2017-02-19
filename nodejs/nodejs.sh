@@ -22,7 +22,8 @@ if [ ! -f $filename ]; then
     sudo yarn global add localtunnel ngrok
 
     # build tools
-    sudo yarn global add gulp webpack rollup jspm
+    sudo yarn global add webpack rollup
+    sudo npm install -g gulp jspm
 
     # generators
     sudo yarn global add yo create-react-app
@@ -31,8 +32,8 @@ if [ ! -f $filename ]; then
     sudo yarn global add mocha jasmine-node karma-cli
 
     # linters
-    sudo yarn global add -g eslint
+    sudo npm install -g  eslint
 
     #elm
-    sudo yarn global add -g elm
+    sudo npm install -g elm
 fi
