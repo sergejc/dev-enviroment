@@ -22,7 +22,6 @@ if [ ! -f "/usr/bin/gconftool-2" ]; then
     sudo apt install gconf2 -y
 fi
 
-
 if [ ! -d $HOME/solarize ]; then
     echo "create Dark and Light gnome terminal profile manualy, press Enter"
     read tmp
@@ -39,13 +38,6 @@ fi
 # MC solarized
 if [ ! -d $HOME/.mc ]; then
     git clone https://github.com/sergejc/mc $HOME/.mc
-fi
-
-# FZF
-if [ ! -d $HOME/.fzf ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    $HOME/.fzf/install
-    source $HOME/.zshrc
 fi
 
 sudo apt autoremove -y
