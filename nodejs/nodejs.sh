@@ -32,4 +32,7 @@ if [ ! -f $filename ]; then
 
     # linters
     sudo yarn global add -g eslint
+
+    #elm
+    sudo yarn global add -g elm
 fi
