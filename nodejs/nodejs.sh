@@ -16,7 +16,7 @@ if [ ! -f $filename ]; then
     sudo yarn global add supervisor browser-sync
 
     # servers
-    sudo yarn global add webpack-dev-server express node-static http-server live-server
+    sudo yarn global add webpack-dev-server node-static http-server live-server
 
     # tunnels
     sudo yarn global add localtunnel ngrok
@@ -32,7 +32,7 @@ if [ ! -f $filename ]; then
     sudo yarn global add mocha jasmine-node karma-cli
 
     # linters
-    sudo npm install -g  eslint
+    sudo npm install -g eslint
 
     #elm
     sudo npm install -g elm
