@@ -16,20 +16,21 @@ if [ ! -f $filename ]; then
     sudo yarn global add supervisor browser-sync
 
     # servers
-    sudo yarn global add webpack-dev-server node-static http-server live-server
+    sudo yarn global add node-static http-server
+    sudo npm install -g webpack-dev-server live-server
 
     # tunnels
-    sudo yarn global add localtunnel ngrok
+    sudo yarn global add ngrok
 
     # build tools
-    sudo yarn global add webpack rollup
-    sudo npm install -g gulp jspm
+    sudo yarn global add rollup
+    sudo npm install -g gulp jsp webpackm
 
     # generators
     sudo yarn global add yo create-react-app
 
     # test tools
-    sudo yarn global add mocha jasmine-node karma-cli
+    sudo yarn global add mocha jasmine-node
 
     # linters
     sudo npm install -g eslint
