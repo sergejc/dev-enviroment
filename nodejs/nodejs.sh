@@ -24,7 +24,7 @@ if [ ! -f $filename ]; then
 
     # build tools
     sudo yarn global add rollup
-    sudo npm install -g gulp jsp webpackm
+    sudo npm install -g gulp jsp webpack
 
     # generators
     sudo yarn global add yo create-react-app
