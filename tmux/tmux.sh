@@ -1,5 +1,10 @@
 #!/bin/bash
 
+while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
+    echo "apt process is running, wait for 5 seconds"
+    sleep 5
+done
+
 if [ ! -d $HOME/.tmux-powerline ]; then
     sudo apt install tmux -y
     git clone https://github.com/sergejc/tmux-powerline.git $HOME/.tmux-powerline
