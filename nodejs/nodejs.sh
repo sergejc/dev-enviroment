@@ -12,23 +12,24 @@ if [ ! -f $filename ]; then
     sudo apt autoremove -y
 
     mkdir $HOME/.npm-global
+    echo "prefix=$HOME/.npm-global" > $HOME/.npmrc
 
     # package manager
-    sudo npm install -g yarn
+    npm install -g yarn
 
     # packages
-    sudo yarn global add supervisor browser-sync
+    npm global add supervisor browser-sync
 
     # servers
     sudo yarn global add node-static http-server
-    sudo npm install -g webpack-dev-server live-server
+    npm install -g webpack-dev-server live-server
 
     # tunnels
     sudo yarn global add ngrok
 
     # build tools
     sudo yarn global add rollup
-    sudo npm install -g gulp jspm webpack
+    npm install -g gulp jspm webpack
 
     # generators
     sudo yarn global add yo create-react-app
@@ -37,8 +38,8 @@ if [ ! -f $filename ]; then
     sudo yarn global add mocha jasmine-node
 
     # linters
-    sudo npm install -g eslint
+    npm install -g eslint
 
     #elm
-    sudo npm install -g elm
+    npm install -g elm
 fi
