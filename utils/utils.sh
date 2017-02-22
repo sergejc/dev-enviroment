@@ -1,5 +1,9 @@
 #!/bin/bash
 
+while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
+    sleep 1
+done
+
 # Locale
 locale -a | grep -q en_GB.utf8 || sudo locale-gen en_GB.utf8
 

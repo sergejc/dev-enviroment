@@ -1,5 +1,9 @@
 #!/bin/bash
 
+while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
+    sleep 1
+done
+
 sudo apt update && sudo apt install ugrade -y
 
 # Locale

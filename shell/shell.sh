@@ -1,5 +1,9 @@
 #!/bin/bash
 
+while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
+    sleep 1
+done
+
 # Zsh
 if ! hash zsh 2&> /dev/null; then
     sudo apt install zsh -y

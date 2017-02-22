@@ -22,7 +22,7 @@ set realname = $USERNAME
 set imap_user = $EMAIL
 set imap_pass = $PASSWORD
 
-# REMOTE GMAIL FOLDERS 
+# REMOTE GMAIL FOLDERS
 set folder = 'imaps://imap.gmail.com:993'
 set spoolfile = '+INBOX'
 set postponed ='+[Google Mail]/Drafts'
