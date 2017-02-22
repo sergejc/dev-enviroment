@@ -18,7 +18,7 @@ if [ ! -f $filename ]; then
     npm install -g yarn
 
     # packages
-    npm global add supervisor browser-sync
+    sudo yarn global add supervisor browser-sync
 
     # servers
     sudo yarn global add node-static http-server
