@@ -56,6 +56,14 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null;
     sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" >> /etc/apt/sources.list.d/virtualbox.list'
 fi
 
+# Ansible
+ppa='ansible'
+if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
+    sudo apt install software-properties-common
+    sudo apt-add-repository ppa:ansible/ansible
+fi
+
+
 # Sublime 3
 ppa='sublime-text-3'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
@@ -114,6 +122,7 @@ sudo apt install -y \
     dkms virtualbox \
     vagrant \
     oracle-java8-installer \
+    ansible \
     sublime-text-installer
 
 sudo service docker start
