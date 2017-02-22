@@ -112,6 +112,13 @@ if [ ! -L $filename ]; then
 fi
 
 
+# Boris CLI
+filename="$HOME/.config/composer/vendor/bin/psysh"
+if [ ! -L $filename ]; then
+    echo "psysh"
+    composer global require 'psy/psysh'
+fi
+
 # PHP Xdebug
 filename="/etc/php/7.0/mods-available/xdebug.ini"
 if [ ! -L $filename ]; then
