@@ -2,6 +2,11 @@
 
 source $PWD/packages/packages.sh
 
+read -p "Install Java (y/n)?" CONT
+if [ "$CONT" == "y" ]; then
+    source $PWD/java/java.sh
+fi
+
 read -p "Install Golang (y/n)?" CONT
 if [ "$CONT" == "y" ]; then
     source $PWD/golang/golang.sh

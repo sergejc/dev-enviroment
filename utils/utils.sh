@@ -35,12 +35,6 @@ if ! grep -q "docker.*$USER" /etc/group; then
     sudo usermod -aG docker $USER
 fi
 
-# Java
-ppa='java'
-if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
-    sudo apt-add-repository ppa:webupd8team/java -y
-fi
-
 # Google Chrome
 ppa='google'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
@@ -121,7 +115,6 @@ sudo apt install -y \
     docker-engine \
     dkms virtualbox \
     vagrant \
-    oracle-java8-installer \
     ansible \
     sublime-text-installer
 
