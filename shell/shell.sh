@@ -23,12 +23,16 @@ fi
 # OH MY ZSHELL
 if [ ! -d $HOME/.oh-my-zsh ]; then
     git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+
+    # OH MY ZSHELL PLUGINS
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 fi
 
 if [ ! -f $HOME/.zshrc ]; then
     cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
     sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="agnoster"/' $HOME/.zshrc
-    sed -i 's/^plugins=(.*)/plugins=(git laravel vagrant)/g' $HOME/.zshrc
+    sed -i 's/^plugins=(.*)/plugins=(git laravel vagrant docker Composer gem lein npm pip sudo tmux zsh-syntax-highlighting zsh-autosuggestions)/g' $HOME/.zshrc
 fi
 
 # Solarized Colorscheme

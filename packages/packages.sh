@@ -18,6 +18,7 @@ sudo apt install \
     apache2-utils unity-tweak-tool dconf-cli \
     tmux nmap elinks openssl ca-certificates \
     net-tools python-pip python-dev netcat sshfs \
-    sshpass keychain whois silversearcher-ag -y
+    sshpass keychain whois silversearcher-ag \
+    httpie facter -y
 
 sudo apt autoremove -y
