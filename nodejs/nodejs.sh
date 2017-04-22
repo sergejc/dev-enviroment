@@ -12,35 +12,46 @@ if [ ! -f $filename ]; then
     sudo apt install nodejs -y
     sudo apt autoremove -y
 
+    # npm configure
     mkdir $HOME/.npm-global
-    echo "prefix=$HOME/.npm-global" > $HOME/.npmrc
+
+    npm config set prefix $HOME/.global-modules
+    npm config set init.author.name "Sergej Charskij"
+    npm config set init.author.email "sergej.charskij@gmail.com"
+    npm config set init.author.url "http://sergejc.com"
+    npm config set init.license "MIT"
+    npm config set init.version "0.0.1"
+    npm config set loglevel="silent"
 
     # package manager
     npm install -g yarn
 
     # packages
-    sudo yarn global add supervisor browser-sync
+    yarn global add supervisor browser-sync
 
     # servers
-    sudo yarn global add node-static http-server
+    yarn global add node-static http-server
     npm install -g webpack-dev-server live-server
 
     # tunnels
-    sudo yarn global add ngrok
+    yarn global add ngrok
 
     # build tools
-    sudo yarn global add rollup
+    yarn global add rollup
     npm install -g gulp jspm webpack
 
     # generators
-    sudo yarn global add yo create-react-app
+    yarn global add yo create-react-app express-generator
 
     # test tools
-    sudo yarn global add mocha jasmine-node
+    yarn global add mocha jasmine-node
 
     # linters
     npm install -g eslint
 
     #elm
     npm install -g elm
+
+    # monitor
+    npm install -g nodemon
 fi
