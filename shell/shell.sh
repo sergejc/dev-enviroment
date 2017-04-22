@@ -41,7 +41,7 @@ if [ ! -f "/usr/bin/gconftool-2" ]; then
 fi
 
 if [ ! -d $HOME/solarize ]; then
-    echo "create Dark and Light gnome terminal profile manualy, press Enter"
+    echo "create dark and light (lowercase) gnome terminal profile manualy, press Enter"
     read tmp
     git clone https://github.com/sergejc/gnome-terminal-colors-solarized $HOME/solarized
     chmod +x $HOME/solarized/install.sh && $HOME/solarized/install.sh && $HOME/solarized/install.sh
