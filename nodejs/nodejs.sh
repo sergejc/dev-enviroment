@@ -31,8 +31,7 @@ if [ ! -f $filename ]; then
     npm install -g yarn
 
     # build tools
-    yarn global add rollup jspm
-    npm install -g gulp-cli webpack
+    yarn global add rollup jspm gulp-cli webpack
 
     # packages
     yarn global add supervisor browser-sync
@@ -47,14 +46,17 @@ if [ ! -f $filename ]; then
     yarn global add yo create-react-app express-generator
 
     # test tools
-    yarn global add mocha jasmine-node
+    yarn global add mocha karma jasmine-node
 
     # linters
-    npm install -g eslint
+    yarn global add eslint
 
     #elm
-    npm install -g elm
+    yarn global add elm
 
     # monitor
-    npm install -g nodemon
+    yarn global add nodemon
+
+    # API documentation generator
+    yarn global add jsdoc
 fi
