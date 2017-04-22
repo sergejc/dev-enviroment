@@ -13,6 +13,8 @@ if [ ! -f $filename ]; then
     sudo apt install npm -y
     sudo apt autoremove -y
 
+    sudo ln -s /usr/bin/nodejs /usr/bin/node
+
     # npm configure
     mkdir $HOME/.npm-global
     PATH=$HOME/.npm-global/bin:$PATH
