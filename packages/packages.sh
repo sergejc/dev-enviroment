@@ -5,7 +5,7 @@ while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do
     sleep 5
 done
 
-sudo apt update && sudo apt install ugrade -y
+sudo apt update && sudo apt upgrade -y
 
 # Locale
 sudo locale-gen en_GB.utf8
