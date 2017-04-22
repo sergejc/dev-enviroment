@@ -30,19 +30,18 @@ if [ ! -f $filename ]; then
     # package manager
     npm install -g yarn
 
+    # build tools
+    yarn global add rollup jspm
+    npm install -g gulp-cli webpack
+
     # packages
     yarn global add supervisor browser-sync
 
     # servers
-    yarn global add node-static http-server
-    npm install -g webpack-dev-server live-server
+    yarn global add node-static http-server webpack-dev-server live-server
 
     # tunnels
     yarn global add ngrok
-
-    # build tools
-    yarn global add rollup
-    npm install -g gulp jspm webpack
 
     # generators
     yarn global add yo create-react-app express-generator
