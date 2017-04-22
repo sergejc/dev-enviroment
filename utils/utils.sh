@@ -112,10 +112,10 @@ sudo apt install -y \
     google-chrome-stable \
     keepassx \
     wine-stable \
-    docker-engine \
+#   docker-engine \
     dkms virtualbox \
     vagrant \
-    ansible \
+#   ansible \
     sublime-text-installer
 
 sudo service docker start
