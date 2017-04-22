@@ -26,8 +26,8 @@ fi
 # Docker
 ppa='docker'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
-    curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -cs) main"
+    #curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
+    #sudo add-apt-repository "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -cs) main"
 fi
 
 if ! grep -q "docker.*$USER" /etc/group; then
@@ -54,7 +54,7 @@ fi
 ppa='ansible'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
     sudo apt install software-properties-common
-    sudo apt-add-repository ppa:ansible/ansible
+    #sudo apt-add-repository ppa:ansible/ansible
 fi
 
 
