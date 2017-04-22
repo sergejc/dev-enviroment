@@ -15,8 +15,9 @@ if [ ! -f $filename ]; then
 
     # npm configure
     mkdir $HOME/.npm-global
+    PATH=$HOME/.npm-global/bin:$PATH
 
-    npm config set prefix $HOME/.global-modules
+    npm config set prefix $HOME/.npm-global
     npm config set init.author.name "Sergej Charskij"
     npm config set init.author.email "sergej.charskij@gmail.com"
     npm config set init.author.url "http://sergejc.com"
