@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+sudo apt install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev libsqlite3-dev
 
 git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.zshrc
