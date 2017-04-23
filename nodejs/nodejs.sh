@@ -59,4 +59,7 @@ if [ ! -f $filename ]; then
 
     # API documentation generator
     yarn global add jsdoc
+
+    # css transfomer
+    yarn global add postcss-cli
 fi
