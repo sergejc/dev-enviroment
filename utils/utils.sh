@@ -50,6 +50,10 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null;
     sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" >> /etc/apt/sources.list.d/virtualbox.list'
 fi
 
+# watchman
+#git clone https://github.com/facebook/watchman.git /tmp/watchman
+#(cd /tmp/watchman; ./autogen.sh && ./configure && make && sudo make install)
+
 # Ansible
 ppa='ansible'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
