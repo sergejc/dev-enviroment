@@ -30,6 +30,10 @@ if [ ! -f $filename ]; then
     # yarn
     curl -o- -L https://yarnpkg.com/install.sh | bash
 
+
+    # package manager
+    yarn global add pnpm
+
     # build tools
     yarn global add rollup jspm gulp-cli webpack
 
