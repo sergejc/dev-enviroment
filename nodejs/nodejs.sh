@@ -27,8 +27,8 @@ if [ ! -f $filename ]; then
     npm config set init.version "0.0.1"
     npm config set loglevel="silent"
 
-    # package manager
-    npm install -g yarn
+    # yarn
+    curl -o- -L https://yarnpkg.com/install.sh | bash
 
     # build tools
     yarn global add rollup jspm gulp-cli webpack
