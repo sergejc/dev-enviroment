@@ -66,4 +66,8 @@ if [ ! -f $filename ]; then
 
     # css transfomer
     yarn global add postcss-cli
+
+    # code checker
+    yarn global add flow-bin
+
 fi
