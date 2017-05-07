@@ -70,4 +70,7 @@ if [ ! -f $filename ]; then
     # code checker
     yarn global add flow-bin
 
+    # js optimizer
+    yarn global add prepack
+
 fi
