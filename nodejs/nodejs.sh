@@ -73,4 +73,7 @@ if [ ! -f $filename ]; then
     # js optimizer
     yarn global add prepack
 
+    # js formater
+    yarn global add prettier
+
 fi
