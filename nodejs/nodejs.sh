@@ -53,7 +53,7 @@ if [ ! -f $filename ]; then
     yarn global add mocha karma jasmine-node
 
     # linters
-    yarn global add eslint
+    yarn global add eslint stylelint
 
     #elm
     yarn global add elm
