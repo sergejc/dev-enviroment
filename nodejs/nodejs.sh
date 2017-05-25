@@ -55,8 +55,11 @@ if [ ! -f $filename ]; then
     # linters
     yarn global add eslint stylelint
 
-    #elm
+    # elm
     yarn global add elm
+
+    # clojurescript
+    yarn global add shadow-cljs
 
     # monitor
     yarn global add nodemon
