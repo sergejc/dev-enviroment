@@ -47,7 +47,7 @@ if [ ! -f $filename ]; then
     yarn global add ngrok
 
     # generators
-    yarn global add yo create-react-app express-generator create-next-app
+    yarn global add yo create-react-app express-generator create-next-app preact-cle
 
     # test tools
     yarn global add mocha karma jasmine-node
