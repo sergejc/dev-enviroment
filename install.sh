@@ -5,6 +5,7 @@ source $PWD/packages/packages.sh
 read -p "Install ZSH (y/n)?" CONT
 if [ "$CONT" == "y" ]; then
     source $PWD/shell/shell.sh
+    sudo init 0
 fi
 
 read -p "Install dotfiles (y/n)?" CONT
@@ -67,4 +68,3 @@ if [ "$CONT" == "y" ]; then
     source $PWD/ssh/ssh.sh
 fi
 
-sudo init 0
