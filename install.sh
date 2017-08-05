@@ -2,6 +2,26 @@
 
 source $PWD/packages/packages.sh
 
+read -p "Install ZSH (y/n)?" CONT
+if [ "$CONT" == "y" ]; then
+    source $PWD/shell/shell.sh
+fi
+
+read -p "Install dotfiles (y/n)?" CONT
+if [ "$CONT" == "y" ]; then
+    source $PWD/dotfiles/dotfiles.sh
+fi
+
+read -p "Install Vim (y/n)?" CONT
+if [ "$CONT" == "y" ]; then
+    source $PWD/vim/vim.sh
+fi
+
+read -p "Install Tmux (y/n)?" CONT
+if [ "$CONT" == "y" ]; then
+    source $PWD/tmux/tmux.sh
+fi
+
 read -p "Install Java (y/n)?" CONT
 if [ "$CONT" == "y" ]; then
     source $PWD/java/java.sh
@@ -37,29 +57,9 @@ if [ "$CONT" == "y" ]; then
     source $PWD/mysql/mysql.sh
 fi
 
-read -p "Install ZSH (y/n)?" CONT
-if [ "$CONT" == "y" ]; then
-    source $PWD/shell/shell.sh
-fi
-
 read -p "Install NodeJs (y/n)?" CONT
 if [ "$CONT" == "y" ]; then
     source $PWD/nodejs/nodejs.sh
-fi
-
-read -p "Install dotfiles (y/n)?" CONT
-if [ "$CONT" == "y" ]; then
-    source $PWD/dotfiles/dotfiles.sh
-fi
-
-read -p "Install Vim (y/n)?" CONT
-if [ "$CONT" == "y" ]; then
-    source $PWD/vim/vim.sh
-fi
-
-read -p "Install Tmux (y/n)?" CONT
-if [ "$CONT" == "y" ]; then
-    source $PWD/tmux/tmux.sh
 fi
 
 read -p "Update SSH config (y/n)?" CONT

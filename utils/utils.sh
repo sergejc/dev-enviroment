@@ -26,8 +26,12 @@ fi
 # Docker
 ppa='docker'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
-    #curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
-    #sudo add-apt-repository "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -cs) main"
+    curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -cs) stable"
+
+    COMPOSE_VERSION=`git ls-remote https://github.com/docker/compose | grep refs/tags | grep -oP "[0-9]+\.[0-9][0-9]+\.[0-9]+$" | tail -n 1`
+    sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+    sudo chmod +x /usr/local/bin/docker-compose
 fi
 
 if ! grep -q "docker.*$USER" /etc/group; then
@@ -58,7 +62,7 @@ fi
 ppa='ansible'
 if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
     sudo apt install software-properties-common
-    #sudo apt-add-repository ppa:ansible/ansible
+    sudo apt-add-repository ppa:ansible/ansible
 fi
 
 
@@ -116,10 +120,10 @@ sudo apt install -y \
     google-chrome-stable \
     keepassx \
     wine-stable \
-#   docker-engine \
+    docker-ce \
     dkms virtualbox \
     vagrant \
-#   ansible \
+    ansible \
     sublime-text-installer
 
 sudo service docker start
