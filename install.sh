@@ -5,12 +5,6 @@ source $PWD/packages/packages.sh
 read -p "Install ZSH (y/n)?" CONT
 if [ "$CONT" == "y" ]; then
     source $PWD/shell/shell.sh
-    sudo init 0
-fi
-
-read -p "Install dotfiles (y/n)?" CONT
-if [ "$CONT" == "y" ]; then
-    source $PWD/dotfiles/dotfiles.sh
 fi
 
 read -p "Install Vim (y/n)?" CONT
@@ -21,6 +15,12 @@ fi
 read -p "Install Tmux (y/n)?" CONT
 if [ "$CONT" == "y" ]; then
     source $PWD/tmux/tmux.sh
+fi
+
+read -p "Install dotfiles (y/n)?" CONT
+if [ "$CONT" == "y" ]; then
+    source $PWD/dotfiles/dotfiles.sh
+    sudo init 0
 fi
 
 read -p "Install Java (y/n)?" CONT
