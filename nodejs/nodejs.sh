@@ -10,7 +10,6 @@ filename='/etc/apt/sources.list.d/nodesource.list'
 if [ ! -f $filename ]; then
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
     sudo apt install nodejs -y
-    sudo apt install npm -y
     sudo apt autoremove -y
 
     sudo ln -s /usr/bin/nodejs /usr/bin/node
