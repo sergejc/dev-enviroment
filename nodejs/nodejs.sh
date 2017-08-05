@@ -12,8 +12,6 @@ if [ ! -f $filename ]; then
     sudo apt install nodejs -y
     sudo apt autoremove -y
 
-    sudo ln -s /usr/bin/nodejs /usr/bin/node
-
     # npm configure
     mkdir $HOME/.npm-global
     PATH=$HOME/.npm-global/bin:$PATH
@@ -27,8 +25,9 @@ if [ ! -f $filename ]; then
     npm config set loglevel="silent"
 
     # yarn
-    curl -o- -L https://yarnpkg.com/install.sh | bash
-
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo apt-get update && sudo apt-get install yarn
 
     # package manager
     yarn global add pnpm
