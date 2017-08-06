@@ -9,12 +9,12 @@ done
 locale -a | grep -q en_GB.utf8 || sudo locale-gen en_GB.utf8
 
 sudo apt install \
-php php7.0-curl php7.0-gd \
-php7.0-sqlite3 php7.0-mcrypt php-memcached \
-php7.0-mysql php7.0-dev php7.0-pgsql \
-php7.0-imap php-redis php-pear \
-php7.0-mbstring php7.0-bz2 php7.0-zip \
-libapache2-mod-php7.0 -y
+php php-curl php-gd \
+php-sqlite3 php-mcrypt php-memcached \
+php-mysql php-dev php-pgsql \
+php-imap php-redis php-pear \
+php-mbstring php-bz2 php-zip \
+libapache2-mod-php -y
 
 # Composer
 filename='/usr/local/bin/composer'
@@ -161,7 +161,7 @@ if ! grep -q 'max_input_vars = 10000' $PHP_CLI_INI; then
     sudo sed -i "s|^display_startup_errors = Off|display_startup_errors = On|" $PHP_CLI_INI
     sudo sed -i "s|^post_max_size = 8M|post_max_size = 16M|" $PHP_CLI_INI
     sudo sed -i "s|^upload_max_filesize = 2M|upload_max_filesize = 16M|" $PHP_CLI_INI
-    sudo sed -i "s|^; max_input_vars = 1000|max_input_vars = 10000|" $PHP_CLI_INI 
+    sudo sed -i "s|^; max_input_vars = 1000|max_input_vars = 10000|" $PHP_CLI_INI
 fi
 
 sudo apt autoremove -y
