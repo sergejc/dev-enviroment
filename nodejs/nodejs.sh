@@ -8,7 +8,7 @@ done
 # NodeJs
 filename='/etc/apt/sources.list.d/nodesource.list'
 if [ ! -f $filename ]; then
-    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
     sudo apt install nodejs -y
     sudo apt autoremove -y
 
@@ -33,7 +33,7 @@ if [ ! -f $filename ]; then
     yarn global add pnpm
 
     # build tools
-    yarn global add rollup jspm gulp-cli webpack
+    yarn global add rollup jspm gulp-cli webpack parcel-bundler
 
     # packages
     yarn global add supervisor browser-sync
