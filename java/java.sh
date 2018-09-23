@@ -12,5 +12,5 @@ if ! grep -q "$ppa" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null;
 fi
 
 sudo apt update
-sudo apt install -y oracle-java8-installer
+sudo apt install -y oracle-java9-installer
 sudo apt autoremove -y
